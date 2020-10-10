@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.5">
+  <NonVisualComponents>
+    <Container class="javax.swing.JPanel" name="mainPanel">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="mainPanel" noResource="true"/>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="37" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="servicesField" linkSize="2" min="-2" pref="367" max="-2" attributes="0"/>
+                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                          <Component id="jButton2" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="stationsField" min="-2" pref="367" max="-2" attributes="0"/>
+                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="monday" linkSize="2" min="-2" pref="367" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jButton3" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="tuesday" linkSize="2" min="-2" pref="367" max="-2" attributes="0"/>
+                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                          <Component id="jButton4" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="wednesday" linkSize="2" min="-2" pref="367" max="-2" attributes="0"/>
+                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                          <Component id="jButton5" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="thursday" linkSize="2" min="-2" pref="367" max="-2" attributes="0"/>
+                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                          <Component id="jButton6" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="469" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="47" max="32767" attributes="0"/>
+                          <Component id="saturday" linkSize="2" min="-2" pref="367" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="satur" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="56" max="32767" attributes="0"/>
+                          <Component id="friday" linkSize="2" min="-2" pref="367" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="jButton7" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jSeparator1" pref="556" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="48" max="32767" attributes="0"/>
+                          <Component id="sunday" linkSize="2" min="-2" pref="367" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="sundy" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="28" max="32767" attributes="0"/>
+                                  <Component id="archiveField" linkSize="2" min="-2" pref="367" max="-2" attributes="1"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="filterSlider" min="-2" pref="236" max="-2" attributes="1"/>
+                                      <Component id="outField" linkSize="2" alignment="0" min="-2" pref="367" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="1">
+                                  <Component id="generateBT" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="archiveBT" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="outBT" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="stationsField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="servicesField" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton2" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel3" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel4" linkSize="5" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel5" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton3" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="monday" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel6" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tuesday" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton4" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel7" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="wednesday" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton5" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel8" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="thursday" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton6" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel9" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="friday" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton7" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel11" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="saturday" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="satur" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel12" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="sunday" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="sundy" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel13" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="archiveField" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="archiveBT" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="outField" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="outBT" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel14" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                              <Component id="generateBT" linkSize="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="filterSlider" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel1.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel2.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel2" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="stationsField">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="stationsField.text"/>
+            <Property name="name" type="java.lang.String" value="stationsField" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jButton1.text"/>
+            <Property name="name" type="java.lang.String" value="jButton1" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton2">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jButton2.text"/>
+            <Property name="name" type="java.lang.String" value="jButton2" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel3.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel3" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="servicesField">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="servicesField.text"/>
+            <Property name="name" type="java.lang.String" value="servicesField" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel4.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel4" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel5">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel5.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel5" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="monday">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="monday.text"/>
+            <Property name="name" type="java.lang.String" value="monday" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton3">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jButton3.text"/>
+            <Property name="name" type="java.lang.String" value="jButton3" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel6">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel6.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel6" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tuesday">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="tuesday.text"/>
+            <Property name="name" type="java.lang.String" value="tuesday" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton4">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jButton4.text"/>
+            <Property name="name" type="java.lang.String" value="jButton4" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel7">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel7.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel7" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="wednesday">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="wednesday.text"/>
+            <Property name="name" type="java.lang.String" value="wednesday" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton5">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jButton5.text"/>
+            <Property name="name" type="java.lang.String" value="jButton5" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel8">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel8.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel8" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="thursday">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="thursday.text"/>
+            <Property name="name" type="java.lang.String" value="thursday" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton6">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jButton6.text"/>
+            <Property name="name" type="java.lang.String" value="jButton6" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel9">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel9.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel9" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="friday">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="friday.text"/>
+            <Property name="name" type="java.lang.String" value="friday" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton7">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jButton7.text"/>
+            <Property name="name" type="java.lang.String" value="jButton7" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="jSeparator1">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="jSeparator1" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel11">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel11.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel11" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="saturday">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="saturday" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel12">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel12.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel12" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="sunday">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="sunday" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="satur">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="satur.text"/>
+            <Property name="name" type="java.lang.String" value="satur" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saturActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="sundy">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="sundy.text"/>
+            <Property name="name" type="java.lang.String" value="sundy" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sundyActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel13">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel13.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel13" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="archiveField">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="archiveField" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="archiveBT">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jarFile.text"/>
+            <Property name="name" type="java.lang.String" value="jarFile" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="archiveBTActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel14">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel14.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel14" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="outField">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="outField" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="outBT">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="output.text"/>
+            <Property name="name" type="java.lang.String" value="output" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="outBTActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="generateBT">
+          <Properties>
+            <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+              <action class="converter.ConverterView" id="generate" methodName="generate"/>
+            </Property>
+            <Property name="text" type="java.lang.String" resourceKey="generate.text"/>
+            <Property name="name" type="java.lang.String" value="generate" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generateBTActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JSlider" name="filterSlider">
+          <Properties>
+            <Property name="majorTickSpacing" type="int" value="1"/>
+            <Property name="maximum" type="int" value="10"/>
+            <Property name="paintTicks" type="boolean" value="true"/>
+            <Property name="snapToTicks" type="boolean" value="true"/>
+            <Property name="value" type="int" value="3"/>
+            <Property name="name" type="java.lang.String" value="filterSlider" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel10">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel10.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel10" noResource="true"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JMenuBar" name="menuBar">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="menuBar" noResource="true"/>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+      <SubComponents>
+        <Menu class="javax.swing.JMenu" name="fileMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="fileMenu.text"/>
+            <Property name="name" type="java.lang.String" value="fileMenu" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+          </AuxValues>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="exitMenuItem">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="org.jdesktop.application.Application" id="quit" methodName="quit"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="exitMenuItem" noResource="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+              </AuxValues>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="helpMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="helpMenu.text"/>
+            <Property name="name" type="java.lang.String" value="helpMenu" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+          </AuxValues>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="aboutMenuItem">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="converter.ConverterView" id="showAboutBox" methodName="showAboutBox"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="aboutMenuItem" noResource="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+              </AuxValues>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="statusPanel">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="statusPanel" noResource="true"/>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="statusPanelSeparator" alignment="0" pref="601" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="417" max="32767" attributes="0"/>
+                  <Component id="progressBar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="statusPanelSeparator" min="-2" pref="2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="statusMessageLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="statusAnimationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="progressBar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JSeparator" name="statusPanelSeparator">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="statusPanelSeparator" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="statusMessageLabel">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="statusMessageLabel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="statusAnimationLabel">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="name" type="java.lang.String" value="statusAnimationLabel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JProgressBar" name="progressBar">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="progressBar" noResource="true"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="component" type="javax.swing.JComponent" editor="org.netbeans.modules.form.ComponentChooserEditor">
+      <ComponentRef name="mainPanel"/>
+    </Property>
+    <Property name="menuBar" type="javax.swing.JMenuBar" editor="org.netbeans.modules.form.ComponentChooserEditor">
+      <ComponentRef name="menuBar"/>
+    </Property>
+    <Property name="statusBar" type="javax.swing.JComponent" editor="org.netbeans.modules.form.ComponentChooserEditor">
+      <ComponentRef name="statusPanel"/>
+    </Property>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,7,0,0,2,89"/>
+  </AuxValues>
+</Form>

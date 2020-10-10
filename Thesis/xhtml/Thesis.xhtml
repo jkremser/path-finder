@@ -1,0 +1,1992 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Systém pro vyhledávání dopravního spojení v rámci IDS JMK</title>
+    <link rel="stylesheet" href="docbook.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.69.1" />
+    <meta name="description" content="Potřeba člověka být včas na správném místě je v dnešní uspěchané&#10;      době zřejmá. S využitím mobilních zařízení si může každý nosit jízdní&#10;      řády s sebou. Cílem této práce je popsat platformu Java ME a&#10;      implementovat aplikaci, která pomáhá uživateli zorientovat se v příliš&#10;      komplexních službách IDS JMK. Aplikace slouží jako vyhledávač spojů v&#10;      dopravní síti." />
+    <meta name="keywords" content="vyhledávač, IDS JMK, mobilní zařízení, Java ME, MIDP 2.0, CLDC&#10;      1.1" />
+  </head>
+  <body>
+    <div class="book" lang="cs" xml:lang="cs">
+      <div>
+        <div>
+          <div>
+            <p class="university">MASARYKOVA UNIVERZITA</p>
+            <p class="faculty">FAKULTA INFORMATIKY</p>
+            <div class="facultylogo">
+              <img src="fi-logo.png" alt="FAKULTA INFORMATIKY" />
+            </div>
+            <h1 class="title"><a class="id4720627"></a>Systém pro vyhledávání dopravního spojení v rámci IDS JMK</h1>
+          </div>
+          <div>
+            <h2 class="subtitle">Bakalářská práce</h2>
+          </div>
+          <div>
+            <div class="author">
+              <h3 class="author"><span class="firstname">Jiří</span> <span class="surname">Kremser</span></h3>
+            </div>
+          </div>
+          <div>
+            <p class="pubdate">Brno, 2008</p>
+            <div class="declaration">
+              <p class="title">
+                <b>Prohlášení</b>
+              </p>
+              <p>Prohlašuji, že tato bakalářská práce je mým původním autorským dílem, které jsem vypracoval samostatně. Všechny zdroje, prameny a literaturu, které jsem při vypracování používal nebo z nich čerpal, v práci řádně cituji s uvedením úplného odkazu na příslušný zdroj.</p>
+            </div>
+            <div class="advisor">
+              <p class="title">
+                <b>Vedoucí práce</b>
+              </p>
+              <p>RNDr. Tomáš Pitner, Ph.D.</p>
+            </div>
+          </div>
+          <div>
+            <div class="abstract">
+              <p class="title">
+                <b>Shrnutí</b>
+              </p>
+              <p>Potřeba člověka být včas na správném místě je v dnešní uspěchané
+      době zřejmá. S využitím mobilních zařízení si může každý nosit jízdní
+      řády s sebou. Cílem této práce je popsat platformu Java ME a
+      implementovat aplikaci, která pomáhá uživateli zorientovat se v příliš
+      komplexních službách IDS JMK. Aplikace slouží jako vyhledávač spojů v
+      dopravní síti.</p>
+            </div>
+          </div>
+        </div>
+        <hr />
+      </div>
+      <div class="toc">
+        <p>
+          <b>Obsah</b>
+        </p>
+        <dl>
+          <dt>
+            <span class="chapter">
+              <a href="#ch01">1. Úvod</a>
+            </span>
+          </dt>
+          <dd>
+            <dl>
+              <dt>
+                <span class="sect1">
+                  <a href="#sec0101">Vyhledávač spojů</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#sec0102">Struktura této práce</a>
+                </span>
+              </dt>
+            </dl>
+          </dd>
+          <dt>
+            <span class="chapter">
+              <a href="#ch02">2. Java ME</a>
+            </span>
+          </dt>
+          <dd>
+            <dl>
+              <dt>
+                <span class="sect1">
+                  <a href="#sec0201">Historie</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#sec0202">Konfigurace</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#sec0203">Profily</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#id4725547">Volitelné balíčky</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#id4721613">Midlet</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#id4721693">Jar, Jad, distribuce</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#id4721851">Podpora</a>
+                </span>
+              </dt>
+              <dd>
+                <dl>
+                  <dt>
+                    <span class="sect2">
+                      <a href="#id4721884">Sun Java Wireless Toolkit</a>
+                    </span>
+                  </dt>
+                </dl>
+              </dd>
+            </dl>
+          </dd>
+          <dt>
+            <span class="chapter">
+              <a href="#ch03">3. Práce s daty v Java ME</a>
+            </span>
+          </dt>
+          <dd>
+            <dl>
+              <dt>
+                <span class="sect1">
+                  <a href="#sec0301">RMS</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#sec0303">Konstanty a deskriptor</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#sec0304">Resources</a>
+                </span>
+              </dt>
+            </dl>
+          </dd>
+          <dt>
+            <span class="chapter">
+              <a href="#ch04">4. Vyhledávací algoritmy</a>
+            </span>
+          </dt>
+          <dd>
+            <dl>
+              <dt>
+                <span class="sect1">
+                  <a href="#id4789392">Pojmy</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#sec0401">Floyd–Warshallův algoritmus</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#id4789629">Dijkstrův algoritmus</a>
+                </span>
+              </dt>
+            </dl>
+          </dd>
+          <dt>
+            <span class="chapter">
+              <a href="#id4789802">5. Analýza</a>
+            </span>
+          </dt>
+          <dd>
+            <dl>
+              <dt>
+                <span class="sect1">
+                  <a href="#id4789808">Specifikace</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#id4789830">Způsob ukládání dat</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#id4789890">Vyhledávání spojů</a>
+                </span>
+              </dt>
+              <dd>
+                <dl>
+                  <dt>
+                    <span class="sect2">
+                      <a href="#id4720314">Ohodnocení hran</a>
+                    </span>
+                  </dt>
+                </dl>
+              </dd>
+              <dt>
+                <span class="sect1">
+                  <a href="#id4720347">Shrnutí</a>
+                </span>
+              </dt>
+            </dl>
+          </dd>
+          <dt>
+            <span class="chapter">
+              <a href="#id4790219">6. Konvertor dat</a>
+            </span>
+          </dt>
+          <dd>
+            <dl>
+              <dt>
+                <span class="sect1">
+                  <a href="#sec0601">Formát vstupních dat</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#id4790576">Formát výstupních dat</a>
+                </span>
+              </dt>
+            </dl>
+          </dd>
+          <dt>
+            <span class="chapter">
+              <a href="#id4790888">7. Vyhledávač</a>
+            </span>
+          </dt>
+          <dd>
+            <dl>
+              <dt>
+                <span class="sect1">
+                  <a href="#sec0701">Kompatibilita</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#id4791144">Případy užití</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect1">
+                  <a href="#id4791500">Schéma a implementace</a>
+                </span>
+              </dt>
+              <dd>
+                <dl>
+                  <dt>
+                    <span class="sect2">
+                      <a href="#id4791554">Midlety</a>
+                    </span>
+                  </dt>
+                  <dt>
+                    <span class="sect2">
+                      <a href="#id4791648">Formuláře</a>
+                    </span>
+                  </dt>
+                  <dt>
+                    <span class="sect2">
+                      <a href="#id4791754">Aplikační logika</a>
+                    </span>
+                  </dt>
+                </dl>
+              </dd>
+            </dl>
+          </dd>
+          <dt>
+            <span class="chapter">
+              <a href="#ch06">8. Závěr</a>
+            </span>
+          </dt>
+          <dt>
+            <span class="bibliography">
+              <a href="#id4791931">Bibliografie</a>
+            </span>
+          </dt>
+          <dt>
+            <span class="appendix">
+              <a href="#appA">A. Podoba aplikací</a>
+            </span>
+          </dt>
+          <dt>
+            <span class="appendix">
+              <a href="#id4792511">B. Obsah CD</a>
+            </span>
+          </dt>
+        </dl>
+      </div>
+      <div class="list-of-figures">
+        <p>
+          <b>Seznam obrázků</b>
+        </p>
+        <dl>
+          <dt>2.1. <a href="#obr2.1">Schéma Java ME</a></dt>
+          <dt>2.2. <a href="#obr2.2">Životní cyklus midletu</a></dt>
+          <dt>6.1. <a href="#obr6.1">Záznam se zastávkou Halasovo náměstí</a></dt>
+          <dt>6.2. <a href="#obr6.2">Záznam se službou 001000102 a spojem linky 1</a></dt>
+          <dt>7.1. <a href="#id4791478">Use case diagram</a></dt>
+          <dt>7.2. <a href="#id4791530">Diagram celé aplikace</a></dt>
+          <dt>7.3. <a href="#id4791730">Class diagram view vrstvy</a></dt>
+          <dt>A.1. <a href="#obr">Aplikace Konvertor</a></dt>
+          <dt>A.2. <a href="#id4792462">Midlet pro vyhledávání</a></dt>
+          <dt>A.3. <a href="#id4792485">Midlet pro zobrazení jízdních řádů</a></dt>
+        </dl>
+      </div>
+      <div class="chapter" lang="cs" xml:lang="cs">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h2 class="title"><a id="ch01"></a>Kapitola 1. Úvod</h2>
+            </div>
+          </div>
+        </div>
+        <p>V několika posledních desetiletích zažila mobilní zařízení obrovský
+    vývoj. Telefony dnes již neslouží pouze ke komunikaci. Společně se
+    zařízeními <span class="abbrev">PDA</span> otevřeli vývojářům nové pole působnosti. S
+    nástupem Javy na tuto platformu tak mohou vznikat užitečné aplikace
+    usnadňující běžný život. Tato bakalářská práce popíše vývoj právě jedné
+    takové mobilní aplikace.</p>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="sec0101"></a>Vyhledávač spojů</h2>
+              </div>
+            </div>
+          </div>
+          <p>Zadáním je vytvořit aplikaci pro vyhledávání dopravních spojů.
+      Všechna řešení, která jsou v současné době k dispozici pro vyhledávání
+      spojů, buď vyžadují online připojení, nebo jsou určeny jen pro Brno.
+      Moje aplikace si klade za cíl být offline variantou, která bude
+      vyhledávat spoje i pro okolí Brna.</p>
+          <p>Offline varianta má tu výhodu, že její používání je zcela zdarma.
+      Nevýhodou je horší aktualizovatelnost, protože data nejsou
+      centralizovaná. IDS JMK naštěstí jízdní řády nemění příliš často, navíc
+      aplikace bude obsahovat už nové jízdní řády pro rok 2008.</p>
+          <p>Pro snadnější aktualizaci dat je společně s aplikací vyhledávače
+      vyvinuta aplikace konvertor, která sestaví aplikaci vyhledávače vždy z
+      aktuálních dat ze systému IDS JMK.</p>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="sec0102"></a>Struktura této práce</h2>
+              </div>
+            </div>
+          </div>
+          <p>Tato bakalářská práce se nesnaží být kompletní příručkou pro
+      platformu Java ME. Zaměřuje se na témata, která mají co do činění s
+      řešeným problémem. V druhé kapitole jsou stručně popsány architektura
+      mikro edice Javy, distribuce aplikací a nástroje usnadňující vývoj.
+      Třetí kapitola má za cíl probrat možnosti Javy ME pro ukládání většího
+      objemu dat, což je v případě aplikace pro vyhledávání spojů potřeba.
+      Následuje kapitola o vyhledávání v grafech. Pátá kapitola se zabývá
+      analýzou řešeného problému a popisuje, jak je možné využít technologie
+      popsané v předchozích kapitolách. Zbylé kapitoly popisují samotné
+      aplikace.</p>
+        </div>
+      </div>
+      <div class="chapter" lang="cs" xml:lang="cs">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h2 class="title"><a id="ch02"></a>Kapitola 2. Java ME</h2>
+            </div>
+          </div>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="sec0201"></a>Historie</h2>
+              </div>
+            </div>
+          </div>
+          <p>Podnětem ke vzniku programovacího jazyka, byl vývoj aplikace pro
+      přenosný ovladač domácích spotřebičů. Projekt se jmenoval Stealth
+      Project (později Green Project) a členem jeho týmu byl i zakladatel
+      jazyka Oak James Gosling. Potřeba nového jazyka pramenila ze zkušeností
+      s jazykem C++, který byl velmi náchylný k programátorským chybám. Oak
+      byl navržen tak, aby co nejvíce chyb zachytil už při kompilaci a
+      nedovoloval programátorovi pracovat s ukazateli a správou paměti
+      [<span class="citation">[1]</span>].</p>
+          <p>Zařízení pro ovládání domácích spotřebičů se pro malou poptávku
+      nezačalo nikdy sériově vyrábět. Společnost Sun Microsystems, jejíž byl
+      Gosling členem, přejmenovala v roce 1995 kvůli kolizi jmen s jiným
+      produktem jazyk Oak na Java. Společnost Netscape Javu integrovala do
+      svých prohlížečů a světlo světa spatřily první aplety.</p>
+          <p>Java se stávala stále oblíbenější, protože se řídila podle
+      filozofie WORA (Write once, run anywhere). Multiplatformnost byla jednou
+      z hlavních priorit. Platforma Javy se s přidáváním dalších knihoven
+      stále zvětšovala, proto se od verze 2 rozštěpila na platformy J2ME (Java
+      2 Micro Edition), J2SE (Java 2 Standard Edition) a J2EE (Java 2
+      Enterprise Edition).</p>
+          <p>J2ME platforma je velmi rozmanitá, proto obsahuje sadu
+      specifikací, které popisují vždy jen část platformy. Konfigurace tak
+      vymezují minimální množinu vlastností pro danou třídu zařízení a je
+      rozšiřována jedním nebo více profily.</p>
+          <p>S vydáním Javy verze 5 byly platformy přejmenovány na Java ME,
+      Java SE a Java EE.</p>
+          <p>Před nedávnem vydala společnost Google své řešení mobilní
+      platformy s názvem Android. Zdrojové kódy pro platformu Android se píší
+      také v jazyce Java. Android však nevyužívá k interpretaci kódu
+      referenční implementaci Virtual Machine od společnosti Sun, nýbrž svou
+      vlastní implementaci Dalvik VM [<span class="citation">[b]</span>].</p>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="sec0202"></a>Konfigurace</h2>
+              </div>
+            </div>
+          </div>
+          <p>Konfigurace je minimálním společným jmenovatelem pro určitou třídu
+      zařízení. Obsahuje VM (Virtual Machine) a základní Java ME API.</p>
+          <div class="variablelist">
+            <dl>
+              <dt>
+                <span class="term">CLDC</span>
+              </dt>
+              <dd>
+                <p>Connected Limited Device Configuration je nejmenší
+            definovaná konfigurace zaměřená na zařízení s malým množstvím
+            paměti. Minimální hodnoty jsou uvedeny níže.</p>
+                <div class="itemizedlist">
+                  <ul type="disc">
+                    <li>
+                      <p>128 kB paměti pro uložení VM a tříd, jež tvoří platformu
+                CLDC.</p>
+                    </li>
+                    <li>
+                      <p>32 kB operační paměti.</p>
+                    </li>
+                  </ul>
+                </div>
+                <p>Třídy, které jsou součástí konfigurace, se nacházejí v
+            balíčcích [<span class="citation">[8]</span>].</p>
+                <div class="itemizedlist">
+                  <ul type="disc">
+                    <li>
+                      <p>javax.microedirion.io</p>
+                    </li>
+                    <li>
+                      <p>java.io</p>
+                    </li>
+                    <li>
+                      <p>java.util</p>
+                    </li>
+                    <li>
+                      <p>java.lang</p>
+                    </li>
+                  </ul>
+                </div>
+                <p>Balíčky nejsou plnohodnotné varianty Java SE, ale značně
+            ochuzené verze.</p>
+                <p>Specifikace JSR–139 (CLDC 1.1) dává výrobcům velkou volnost
+            v její implementaci. Zařízení nemusí mít displej, dokonce ani
+            klávesnici. Referenční implementace CLDC od společnosti Sun
+            obsahuje Virtual Machine s názvem KVM. Sun také nabízí
+            implementaci s HotSpot překladačem.</p>
+              </dd>
+              <dt>
+                <span class="term">CDC</span>
+              </dt>
+              <dd>
+                <p>Connected Device Configuration je konfigurace pro výkonnější
+            zařízení s většími prostředky. Obvykle pro PDA, chytré telefony a
+            jiné. Vyplňuje tak místo mezi CLDC a Java SE.</p>
+                <p>Minimální požadavky na zařízení.</p>
+                <div class="itemizedlist">
+                  <ul type="disc">
+                    <li>
+                      <p>256 kB paměti ROM pro platformu.</p>
+                    </li>
+                    <li>
+                      <p>512 kB operační paměti.</p>
+                    </li>
+                  </ul>
+                </div>
+                <p>Referenční implementace VM se nazývá CVM<sup>[<a id="id4725393" href="#ftn.id4725393">1</a>]</sup>. Od verze 1.1.1 obsahuje HotSpot překladač. Přibyli
+            plnohodnotná podpora pro reflexi, práci se sítí, kolekce a jiné.
+            Součástí konfigurace není například Swing, který však lze získat
+            použitím profilu Personal profile 1.1 a volitelného balíčku AGUI
+            (JSR–209). Současná verze je CDC 1.1.2 odpovídající
+            JSR–218.</p>
+              </dd>
+            </dl>
+          </div>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="sec0203"></a>Profily</h2>
+              </div>
+            </div>
+          </div>
+          <p>Rozšiřují vlastnosti konfigurace o nové API.</p>
+          <div class="itemizedlist">
+            <ul type="disc">
+              <li>
+                <p>
+                  <span class="bold">
+                    <strong>CDC</strong>
+                  </span>
+                </p>
+                <div class="itemizedlist">
+                  <ul type="circle">
+                    <li>
+                      <p>Foundation Profile</p>
+                    </li>
+                    <li>
+                      <p>Personal Basis Profile</p>
+                    </li>
+                    <li>
+                      <p>Personal Profile</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <p>
+                  <span class="bold">
+                    <strong>CLDC</strong>
+                  </span>
+                </p>
+                <div class="itemizedlist">
+                  <ul type="circle">
+                    <li>
+                      <p>Personal Digital Assistant Profile</p>
+                    </li>
+                    <li>
+                      <p>Information Module Profile</p>
+                    </li>
+                    <li>
+                      <p>Mobile Information Device Profile – <span class="bold"><strong>MIDP</strong></span></p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <p>Profil MIDP je určen pro mobilní telefony a obsahuje funkcionalitu
+      pro tvorbu uživatelského rozhraní, her, práci se sítí a funkce trvalého
+      ukládání záznamů. Aplikace jsou nazývány <em class="firstterm">midlety</em>
+      podle třídy <code class="classname">MIDlet</code>. Současná verze specifikace je
+      2.1, většina stávajících zařízení však podporuje verzi 2.0
+      [<span class="citation">[a]</span>].</p>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="id4725547"></a>Volitelné balíčky</h2>
+              </div>
+            </div>
+          </div>
+          <p>Rozšiřují platformu konfigurace s profilem o API pro specifické
+      účely. Nejsou součástí profilu, protože vyžadují přístup ke specifickým
+      funkcím zařízení. Přehled některých volitelných balíčků je na obrázku
+      <a href="#obr2.1" title="Obrázek 2.1. Schéma Java ME">2.1 – „Schéma Java ME“</a>, současně je zde znázorněno, které balíčky
+      musí být přidány k dané konfiguraci, aby mohlo být výsledné spojení
+      nazváno platformou MSA (Mobile Service Architecture) resp. JTWI (Java
+      Technology for the Wireless Industry). Výrobci je nejsou povinni
+      implementovat do svých zařízení.</p>
+          <div class="figure">
+            <a id="obr2.1"></a>
+            <p class="title">
+              <b>Obrázek 2.1. Schéma Java ME</b>
+            </p>
+            <div class="mediaobject">
+              <img src="./Javame.png" width="500" alt="Schéma Java ME" />
+            </div>
+          </div>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="id4721613"></a>Midlet</h2>
+              </div>
+            </div>
+          </div>
+          <p>Midlet musí dědit od abstraktní třídy
+      <code class="classname">javax.microedition.midlet.MIDlet</code> a implementovat
+      její metody pro řízení životního cyklu midletu. Cyklus řídí AMS
+      (application management software). Midlet tak zprostředkovává rozhraní
+      mezi aplikací a runtime prostřením telefonu.</p>
+          <p>Midlet může být pozastaven například v případě, dojde-li k
+      uskutečnění telefonního hovoru za běhu aplikace, a následně zase
+      obnoven. Volání těchto metod je v kompetenci AMS a je znázorněno na
+      obrázku <a href="#obr2.2" title="Obrázek 2.2. Životní cyklus midletu">2.2 – „Životní cyklus midletu“</a>.</p>
+          <p>Midlet musí být umístěn v <code class="envar">jar</code> archivu aplikace a
+      popsán v <code class="envar">jad</code> deskriptoru. Obsahuje-li archiv
+      <code class="envar">jar</code> více midletů, jedná se o tzv. sadu midletů.</p>
+          <div class="figure">
+            <a id="obr2.2"></a>
+            <p class="title">
+              <b>Obrázek 2.2. Životní cyklus midletu</b>
+            </p>
+            <div class="mediaobject">
+              <img src="./States.png" width="416" alt="Životní cyklus midletu" />
+            </div>
+          </div>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="id4721693"></a>Jar, Jad, distribuce</h2>
+              </div>
+            </div>
+          </div>
+          <p>Všechny midlety, jež mají být součástí sady midletů, musí být
+      společně s dalšími soubory, které aplikace využívá, umístěny v jediném
+      <code class="envar">jar</code> archivu. Strukturu tohoto archivu popisuje soubor
+      <code class="envar">manifest.mf</code>, který je zabalený rovněž uvnitř archivu. V
+      manifestu jsou popsány cesty ke „<span class="quote">spustitelným</span>“ třídám. Ve
+      standardní edici jsou popsány cesty k třídám, jež obsahují statickou
+      metodu main. V mikro edici jsou to cesty k jednotlivým midletům.
+      Součástmi manifestu jsou dodatečné meta informace, které popisují
+      aplikaci a mohou být společné i pro <code class="envar">jad</code> deskriptor. Jedná
+      se o ikony jednotlivých midletů, název sady midletů, verze sady midletů,
+      konfigurace, profil a další.</p>
+          <p>Soubor <code class="envar">jad</code> (Java Application Descriptor) je umístěn
+      vně archivu a byl navržen pro síťové prostředí, kde si uživatel nejprve
+      stáhne malé množství informací, které popisuje aplikaci, a teprve potom
+      vlastní aplikaci. Deskriptor tedy musí obsahovat URL <code class="envar">jar</code>
+      archivu, jeho velikost, verzi a další. Vhodné je také přidat popis,
+      který se uživateli zobrazí ještě před instalací sady midletů. Deskriptor
+      také může obsahovat volitelné atributy
+      <code class="envar">MIDlet-Delete-Notify</code> a
+      <code class="envar">MIDlet-Install-Notify</code>, které zajistí poslání HTTP
+      požadavku na příslušný servlet [<span class="citation">[7]</span>].</p>
+          <p>Distribuce probíhá tak, že oba soubory se umístí na internet a
+      uživatel prostřednictvím protokolu WAP nebo GPRS aplikaci stáhne. Klient
+      může obsahovat také DA (discovery application), která slouží jako portál
+      k jednotlivým midletům. Minimální konfigurace serverové části zahrnuje
+      nastavení MIME typů souborů.</p>
+          <div class="informaltable">
+            <table border="1">
+              <colgroup>
+                <col />
+                <col />
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="bold">
+                      <strong>Typ souboru</strong>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="bold">
+                      <strong>MIME typ</strong>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>JAR</td>
+                  <td>
+                    <code class="envar">application/java-archive</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td>JAD</td>
+                  <td>
+                    <code class="envar">text/vnd.sun.j2me.app-descriptor</code>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="id4721851"></a>Podpora</h2>
+              </div>
+            </div>
+          </div>
+          <p>Podpora pro vývoj mobilních aplikací je poměrně na vysoké úrovni.
+      Vývojová prostředí poskytují jednoduchý způsob, jak aplikaci navrhnout.
+      Například podpora v Netbeans s nainstalovanou podporou pro mobilní
+      aplikace zahrnuje vizuální návrhář pro tok aplikace i samostatné
+      formuláře. Pro Eclipse je vyvíjen zásuvný modul s názvem EclipseME. Obě
+      tyto IDE podporují Sun Java Wireless Toolkit.</p>
+          <p>Podpora ze strany výrobců mobilních zařízení spočívá ve vytváření
+      nástrojů pro usnadnění vývoje aplikací určených právě pro jejich značku.
+      Tyto sady nástrojů obvykle obsahují emulátor dané značky a lze je
+      integrovat s oběma zmíněnými IDE.</p>
+          <div class="sect2" lang="cs" xml:lang="cs">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h3 class="title"><a id="id4721884"></a>Sun Java Wireless Toolkit</h3>
+                </div>
+              </div>
+            </div>
+            <p>Sada nástrojů pro vývoj mobilních aplikací dodávaná společností
+        Sun se nazývá Sun Java Wireless Toolkit. Součástí sady jsou emulátory,
+        které zapouzdřují referenční implementace obou konfigurací a některých
+        profilů, a software pro správu aplikací (AMS). Obsahuje také
+        jednoduché vývojové prostředí s debuggerem a různé užitečné programy.
+        Například nástroj pro správu certifikátů s veřejnými klíči, profiler,
+        monitor paměti a další [<span class="citation">[1]</span>]. Midlety totiž mohou
+        být podepisovány.</p>
+          </div>
+        </div>
+        <div class="footnotes">
+          <br />
+          <hr width="100" align="left" />
+          <div class="footnote">
+            <p><sup>[<a id="ftn.id4725393" href="#id4725393">1</a>] </sup>Zkratky KVM a CVM nemají žádný význam. Dříve znamenali
+                „<span class="quote">Kilobyte</span>“ a „<span class="quote">Compact</span>“, ale od
+                jejich používání se upustilo.</p>
+          </div>
+        </div>
+      </div>
+      <div class="chapter" lang="cs" xml:lang="cs">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h2 class="title"><a id="ch03"></a>Kapitola 3. Práce s daty v Java ME</h2>
+            </div>
+          </div>
+        </div>
+        <p>Java ME je navržena zejména pro hry a aplikace využívající síť.
+    Tvorbou her se tato práce zabývat nebude. Není-li aplikace připojena k
+    síti, je potřeba dodat data jiným způsobem. Obecně lze uchovávání dat
+    rozdělit, ve smyslu následné měnitelnosti dat, na uchovávání ve
+    „<span class="quote">statických</span>“ a „<span class="quote">dynamických</span>“ úložištích.</p>
+        <p>Statické úložiště poskytuje data v průběhu času stále konstantní.
+    Stačí pouze mechanizmus na jejich čtení. Není proto třeba řešit možné
+    inkonzistence způsobené operacemi nad daty. Cenou za tuto vlastnost je
+    ovšem jejich statičnost a většinou i potřeba jejich integrace do systému.
+    Jejich aktualizace není snadná a závisí hodně na implementačních detailech
+    úložiště.</p>
+        <p>Dynamické úložiště umožňuje všechny <span class="acronym">CRUD</span> operace.
+    Tento model pokrývá větší problémovou doménu než předchozí, ale nese se
+    sebou také nutnost ošetřit zpracovávání transakcí v multiuživatelském
+    prostředí. Jeho nejčastějšími zástupci jsou různé relační a objektové
+    databáze.</p>
+        <p>Java ME poskytuje jen několik způsobů, jak je možné data ukládat.
+    Žádá-li si aplikace pracovat pouze se statickým úložištěm, jsou k
+    dispozici resources, ukládání dat do konstant a descriptoru. Zástupci
+    dynamického úložiště jsou <span class="acronym">RMS</span> nebo
+    <span class="acronym">JDBC</span>. <span class="acronym">JDBC API</span> je součástí
+    specifikace <span class="acronym">JSR–169</span> (volitelný balíček) a je určeno pro
+    konfiguraci CDC, proto nelze použít. Jednotlivé způsoby budou v kapitole
+    dále rozebrány.</p>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="sec0301"></a>RMS</h2>
+              </div>
+            </div>
+          </div>
+          <p>Systém pro ukládání dat (Record Management System) je určený pro
+      trvalé uchovávání a manipulaci s daty. Je součástí specifikace
+      <span class="acronym">MIDP 2.0</span> a poskytuje programátorovi
+      <span class="acronym">API</span> pro práci s daty. Přístupovým bodem k datům je
+      „<span class="quote">úložiště záznamů</span>“ implementované třídou
+      <code class="classname">RecordStore</code>.</p>
+          <p>V <span class="acronym">MIDP 2.0</span> je přidána vlastnost sdílení úložišť
+      záznamů mezi různými sadami midletů. Úložiště je totiž jednoznačně
+      identifikováno názvem úložiště (maximálně 32 znaků) a názvem sady
+      midletů. V praxi to znamená, že může jedna aplikace sloužit jako
+      „<span class="quote">instalátor</span>“ pro jinou aplikaci. Instalátor ve smyslu
+      aplikace, která naplní úložiště daty. Tento přístup je ale nešťastný
+      hned v několika bodech.</p>
+          <div class="itemizedlist">
+            <ul type="disc">
+              <li>
+                <p>První aplikace musí data odněkud také čerpat.</p>
+              </li>
+              <li>
+                <p>Změna dat může vyžadovat změnu zdrojového kódu
+          „<span class="quote">instalační</span>“ aplikace.</p>
+              </li>
+              <li>
+                <p>Distribuce je problémová. Buď je „<span class="quote">instalační</span>“
+          midlet součástí stejné sady midletů. Potom bude navždy zobrazován v
+          menu sady midletů. Nebo není součástí stejné sady midletů a uživatel
+          je nucen „<span class="quote">zbytečný</span>“ midlet stáhnout, spustit a
+          smazat.</p>
+              </li>
+            </ul>
+          </div>
+          <p>RMS umožňuje programátorovi vytvářet, rušit, otvírat a zavírat
+      úložiště. Úložiště může obsahovat množinu záznamů. Záznamem může být
+      jakýkoli proud bytů. RMS tedy nehlídá typ ukládaných dat. Vzhledem k
+      tomu, že CLDC ani MIDP nepodporují serializaci objektů, je potřeba
+      vlastní objekty serializovat ručně pomocí
+      <code class="classname">DataOutputStream</code> a
+      <code class="classname">DataInputStream</code>, které umí serializovat
+      primitivní datové typy a řetězce.</p>
+          <p>Každému novému záznamu je přidělen identifikátor. Autoinkrementaci
+      identifikátorů RMS zajišťuje, kvůli výkonnosti však nehlídá tvoření
+      „<span class="quote">děr</span>“ při odebírání záznamů. Nad záznamy lze iterovat
+      prostřednictvím třídy <code class="classname">RecordEnumeration</code>,
+      definovat na nich uspořádání díky třídě
+      <code class="classname">RecordComparator</code> nebo iterovat jen některými
+      (<code class="classname">RecordFilter</code>) [<span class="citation">[2]</span>].</p>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="sec0303"></a>Konstanty a deskriptor</h2>
+              </div>
+            </div>
+          </div>
+          <p>Dalším způsobem, jak lze aplikaci naplnit aplikaci daty, je uložit
+      je přímo do souborů tříd jako statické atributy. Modifikátor
+      <code class="envar">final</code> zajistí jejich neměnitelnost. Tato metoda dovoluje
+      ukládat i binární data, když se jako typ atributu zvolí pole
+      bytů.</p>
+          <p>Toto řešení zkomplikuje čitelnost kódu a zvětší velikost souboru
+      třídy. Zpomalí také zavádění třídy do paměti, ale protože jsou atributy
+      označené modifikátorem <code class="envar">static</code>, není toto zpomalení
+      dramatické. Aktualizovat automaticky takováto data je velmi
+      obtížné.</p>
+          <p>Textová data mohou být ukládána do deskriptoru aplikace. Tato data
+      lze získat metodou <code class="envar">getAppProperty(String key)</code> třídy
+      <code class="classname">MIDlet</code>. Žádná metoda
+      <code class="envar">setAppProperty()</code> není na třídě
+      <code class="classname">MIDlet</code> definována, proto lze data jen číst.
+      Binární data lze kódovat metodou Base64, ale jelikož deskriptor není
+      součástí archivu, není komprimován a metoda Base64 zbytečně velikost
+      deskriptoru zvětší. Deskriptor může mít na různých zařízeních různou
+      maximální velikost.</p>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="sec0304"></a>Resources</h2>
+              </div>
+            </div>
+          </div>
+          <p>Jakékoli soubory uvnitř archivu <code class="envar">jar</code> se nazývají
+      resources. Může se jednat o jednoduché knihovny, multimediální soubory
+      nebo binární data. V aplikaci k jejich načtení slouží metoda
+      <code class="envar">getResourceAsStream(String path)</code>. Jedná se o součást Java
+      Reflection API, jež sice celé není součástí CLDC 1.1, ale některé metody
+      byly ponechány. Přístupovým bodem k metodě je tedy instance typu
+      <code class="classname">Class</code>.</p>
+          <p>Jelikož jsou soubory součástí archivu, není snadná jejich
+      modifikace. Ukládání dat do souborů je z popsaných způsobů nejvhodnější,
+      proto tuto metodu používám ve své práci. Více je popsána možnost
+      aktualizace takovýchto dat v kapitole <a href="#sec06x">6 – „<i>Konvertor dat</i>“</a>.</p>
+        </div>
+      </div>
+      <div class="chapter" lang="cs" xml:lang="cs">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h2 class="title"><a id="ch04"></a>Kapitola 4. Vyhledávací algoritmy</h2>
+            </div>
+          </div>
+        </div>
+        <p>Vyhledávání v grafu je podoborem teorie grafů a lze jej aplikovat na
+    mnoho problémů z běžného života, s nimiž zdánlivě nesouvisí. Obecné
+    vyhledávací algoritmy spojené s heuristikou z dané problémové domény
+    ztratí na obecnosti, ale získají na efektivitě (složitost algoritmu
+    klesne). V dnešní informační společnosti, kde správná informace dostupná
+    včas má cenu zlata, je jejich využitelnost obrovská.</p>
+        <div class="itemizedlist">
+          <ul type="disc">
+            <li>
+              <p>V umělé inteligenci je vyhledávání jedním z klíčových prvků.
+        Budoucnost patří sémantickým sítím a vyhledávacím agentům nad nimi.
+        Datové struktury navrhované v minulých dekádách byly navrhovány pro co
+        největší výkon, proto neobsahovaly žádné metadata a proces vyhledávání
+        nerozlišoval informace podle kontextu výskytu. Dnes se tyto sémantické
+        struktury (formáty) stávají běžnými.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="itemizedlist">
+          <ul type="disc">
+            <li>
+              <p>V managementu velkých firem je nutnost být efektivnější než
+        konkurence. I tady mají vyhledávací a především optimalizační
+        algoritmy své místo. Sestaví-li se co nejvěrnější model problému a
+        určí pákové body, stačí v takovémto modelu naleznout nejlacinější
+        cestu ze stavu A do stavu B. Bohužel sestavit věrný model problému je
+        velice obtížné a v těchto oblastech i subjektivní.</p>
+            </li>
+          </ul>
+        </div>
+        <p>Souvislost hledání spoje v dopravní síti s hledáním nejkratší cesty
+    v grafu je zřejmá, proto budou stručně rozebrány dva nejznámější algoritmy
+    pro nejkratší cestu grafem.</p>
+        <p>Níže jsou uvedeny algoritmy, které nebudou probrány, ale dokáží
+    nejkratší cestu nalézt.</p>
+        <div class="itemizedlist">
+          <ul type="disc">
+            <li>
+              <p>
+                <span class="emphasis">
+                  <em>Algoritmus prohledávání grafu do
+        šířky</em>
+                </span>
+              </p>
+              <p>Realizován pomocí fronty. Nezohledňuje ceny hran.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="itemizedlist">
+          <ul type="disc">
+            <li>
+              <p>
+                <span class="emphasis">
+                  <em>Algoritmus prohledávání grafu do
+        hloubky</em>
+                </span>
+              </p>
+              <p>Realizován pomocí zásobníku. Nezohledňuje ceny hran.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="itemizedlist">
+          <ul type="disc">
+            <li>
+              <p>
+                <span class="emphasis">
+                  <em>Bellman–Fordův algoritmus</em>
+                </span>
+              </p>
+              <p>Realizován pomocí prioritní fronty. Dokáže pracovat se záporně
+        ohodnocenými hranami.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="id4789392"></a>Pojmy</h2>
+              </div>
+            </div>
+          </div>
+          <p>Vysvětlení několika pojmů z teorie grafů. Není třeba zabývat se
+      nesouvislými grafy, protože graf reprezentující dopravní síť IDS JMK je
+      souvislý.</p>
+          <div class="itemizedlist">
+            <ul type="disc">
+              <li>
+                <p>
+                  <span class="emphasis">
+                    <em>Graf</em>
+                  </span>
+                </p>
+                <p>Graf je uspořádaná dvojice<code class="envar">(V,E)</code>, kde
+          <code class="envar">V</code> je neprázdná množina vrcholů (uzlů grafu) a
+          <code class="constant">E</code> je množina dvojic prvků z <code class="envar">V</code>.
+          Jsou-li dvojice uspořádané, je graf orientovaný. Hrana vede mezi
+          vrcholy <code class="envar">x</code> a <code class="envar">y</code> z množiny
+          <code class="envar">V</code>, právě když množina <code class="envar">E</code> obsahuje
+          takovouto dvojici <code class="envar">(x,y)</code>. Je-li graf orientovaný, vede
+          šipka z vrcholu <code class="envar">x</code> do vrcholu, ale nikoliv z vrcholu
+          <code class="envar">x</code> do vrcholu <code class="envar">y</code>.</p>
+              </li>
+            </ul>
+          </div>
+          <div class="itemizedlist">
+            <ul type="disc">
+              <li>
+                <p>
+                  <span class="emphasis">
+                    <em>Multigraf</em>
+                  </span>
+                </p>
+                <p>Mezi dvěma vrcholy může vést libovolný počet hran.</p>
+              </li>
+            </ul>
+          </div>
+          <div class="itemizedlist">
+            <ul type="disc">
+              <li>
+                <p>
+                  <span class="emphasis">
+                    <em>Ohodnocení hran</em>
+                  </span>
+                </p>
+                <p>Existuje funkce, která každou hranu ohodnotí nějakou
+          informací, nejčastěji číslem. Tuto informaci budu dále v práci
+          označovat střídavě pojmy cena a délka.</p>
+              </li>
+            </ul>
+          </div>
+          <div class="itemizedlist">
+            <ul type="disc">
+              <li>
+                <p>
+                  <span class="emphasis">
+                    <a id="sect0401cesta"></a>
+                    <em>Cesta<a id="sect040101"></a></em>
+                  </span>
+                </p>
+                <p>Posloupnost, ve které se pravidelně střídají vrcholy a hrany a
+          symbolizuje pomyslný průchod grafem po jednotlivých hranách
+          vedoucích z vrcholu do vrcholu. Cena cesty je potom součet
+          ohodnocení prošlých hran.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="sec0401"></a>Floyd–Warshallův algoritmus</h2>
+              </div>
+            </div>
+          </div>
+          <p>Floyd–Warshallův (nebo také Roy–Floydův) algoritmus nalezne
+      nejkratší cesty mezi všemi uzly v orientovaném grafu. Využívá matici
+      souslednosti, jejíž hodnoty jsou ceny cest. Matice je reprezentována
+      dvourozměrným polem.</p>
+          <pre class="programlisting">Pseudokód
+ 1  // Předpokládáme funkci cenaHrany(u, v) vracející cenu hrany z u do v
+ 2  // pokud hrana neexistuje, cenaHrany = nekonečno
+ 3  // cenaHrany(u, u) = 0 
+ 4 
+ 5  <span class="bold"><strong>int</strong></span> cesta[][]                     // Dvourozměrné pole. 
+ 6  foreach (u, v) in (V):            // Inicializace                 
+ 7     d[u][v] := cenaHrany(u, v)     // Prvky d[u][v] jsou inicializovány
+ 8                                    // funkcí cenaHrany(u, v)
+ 9  <span class="bold"><strong>   procedure</strong></span> FloydWarshall(d):
+10     <span class="bold"><strong> for</strong></span> k := 1 <span class="bold"><strong>to</strong></span> |V|:
+11        <span class="bold"><strong>foreach</strong></span> (u, v) in (V):
+12           cesta[u][v] := min(cesta[u][v], cesta[u][k] + cesta[k][v])
+</pre>
+          <p>Asymptotická časová složitost algoritmu je stejná jako u
+      Dijkstrova algoritmu, tzn. kubická. Algoritmus podobně jako prohledávání
+      do šířky a do hloubky nezohledňuje hodnocení hran, ale řídí se pouze
+      strukturou grafu. V každé iteraci se pro každý uzel grafu spočítá cena
+      cesty do uzlu, který je o jednu hranu dále.</p>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="id4789629"></a>Dijkstrův algoritmus</h2>
+              </div>
+            </div>
+          </div>
+          <p>Na rozdíl od Floyd–Warshallova algoritmu, počítá tento algoritmus
+      nejkratší cesty v grafu pouze mezi počátečním uzlem <code class="envar">s</code> a
+      všemi ostatními. Datové struktury, jež algoritmus využívá jsou pole
+      <code class="envar">d</code>, kam se ukládají vzdálenosti z <code class="envar">s</code>, a
+      prioritní fronta<sup>[<a id="id4789660" href="#ftn.id4789660">2</a>]</sup>. Funkce <code class="envar">extractMin(N)</code> aplikovaná na dosud
+      nenavštívené vrcholy vyjme z fronty vrchol s nejkratší vzdáleností od
+      <code class="envar">s</code>. Prioritní fronta proto musí být implementována s
+      uspořádáním <code class="envar">u &lt; v</code>, právě kdyz <code class="envar">
+      </code><code class="envar">d[u] &lt; d[v]</code>. Pro každý vrchol <code class="envar">v</code>
+      sousedící s vrcholem <code class="envar">u</code> vybraného z fronty se napočítá
+      jeho vzdálenost, pokud je dosavadní vzdálenost z počátku větší než
+      vzdálenost z počátečního uzlu <code class="envar">s</code> do uzlu <code class="envar">u</code>
+      (<code class="envar">d[u]</code>) sečteno s cenou hrany mezi <code class="envar">u</code> a
+      <code class="envar">v</code>. Pokud sousedící uzel <code class="envar">v</code> ještě nebyl
+      navštíven, hodnota <code class="envar">d[v] = nekonecno</code> . Toho je zajištěno v
+      inicializaci algoritmu.</p>
+          <pre class="programlisting">Pseudokód
+ 1  procedure Dijkstra(V, E, s):
+ 2     <span class="bold"><strong>for each</strong></span> vertex v in E:      // Inicializace
+ 3        d[v] := infinity          // Zatím neznámá vzdálenost z s do v
+ 4        d[s] := 0                 // Vzdálenost z s do s
+ 5        N := V                    // Všechny dosud nenavštívené vrcholy
+ 6
+ 7     <span class="bold"><strong>while</strong></span> N <span class="bold"><strong>is not</strong></span> empty:        // Samotný algoritmus
+ 8        u := extractMin(N)        // Vyjme nejlepší vrchol
+ 9        <span class="bold"><strong>for each</strong></span> neighbor v of u:
+10          alt := d[u] + cenaHrany(u, v)
+11          <span class="bold"><strong>if</strong></span> alt &lt; d[v]              
+12             d[v] := alt
+</pre>
+          <p>Algoritmus tedy postupně navštěvuje nejméně vzdálené (vzdálenost
+      není počet prošlých hran) uzly z počátečního vrcholu a každá iterace
+      představuje pomyslnou vlnu šířící se z počátečního uzlu.</p>
+        </div>
+        <div class="footnotes">
+          <br />
+          <hr width="100" align="left" />
+          <div class="footnote">
+            <p><sup>[<a id="ftn.id4789660" href="#id4789660">2</a>] </sup>Prioritní fronta může být navržena jako binární halda a výběr
+          minimálního prvku má potom konstantní složitost.</p>
+          </div>
+        </div>
+      </div>
+      <div class="chapter" lang="cs" xml:lang="cs">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h2 class="title"><a id="id4789802"></a>Kapitola 5. Analýza</h2>
+            </div>
+          </div>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="id4789808"></a>Specifikace</h2>
+              </div>
+            </div>
+          </div>
+          <p>Systém bude zohledňovat tarifní zóny a informovat uživatele o
+      dostupných jízdenkách. Aplikace bude implementována na platformě Java
+      ME, bude splňovat specifikace MIDP 2.0 a CLDC 1.1 a bude otestována
+      alespoň na příslušných emulátorech. Uživatel bude mít možnost zobrazit
+      si jízdní řád jednotlivých linek na zastávce pro daný den.</p>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="id4789830"></a>Způsob ukládání dat</h2>
+              </div>
+            </div>
+          </div>
+          <p>Po dohodě s Vladimírem Dopitou z IDS JMK mi byla poskytnuta data v
+      textové podobě. Současně tak byla zajištěna budoucnost projektu. Data
+      byla vygenerována z již existujícího systému, který slouží řidičům
+      linek. Více o formátu těchto dat bude uvedeno v sekci <a href="#sec0601" title="Formát vstupních dat">„Formát vstupních dat“</a>. Bylo potřeba zajistit způsob, jak je možno data
+      dostat do aplikace. Po zvážení všech výhod a nevýhod probraných výše,
+      jsem zvolil cestu ukládání dat do souborů (resources).</p>
+          <p>Toto řešení se sebou nese problém aktualizace dat novější verzí v
+      případě změny v jízdních řádech. Proto je k mobilní aplikaci dodávána i
+      desktop aplikace, která je podrobněji probrána v následující
+      kapitole.</p>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="id4789890"></a>Vyhledávání spojů</h2>
+              </div>
+            </div>
+          </div>
+          <p>Termínem „<span class="quote">spoj</span>“ označuji cestu mezi dvěma a více
+      zastávkami. V teorii grafů má tento termín obraz „<span class="quote">cesta
+      grafem</span>“. Budu ještě rozlišovat spoj jedné linky a spoj více linek
+      (možné přestupy), pokud nebude význam z kontextu zřejmý.</p>
+          <p>Problém hledání spoje ze zastávky A do zastávky B v dopravní síti
+      lze redukovat na problém hledání nejkratší cesty v grafu z uzlu X do
+      uzlu Y. Hrana z uzlu X do uzlu Y vede právě tehdy, když existuje linka,
+      která projíždí zastávkami A a B bezprostředně za sebou. Hrana musí být
+      orientovaná, protože existují linky, jejichž „<span class="quote">zpáteční</span>“
+      trasa není stejná jako ta „<span class="quote">prvotní</span>“<sup>[<a id="id4720303" href="#ftn.id4720303">3</a>]</sup>. Ohodnocení hran je složitější.</p>
+          <div class="sect2" lang="cs" xml:lang="cs">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h3 class="title"><a id="id4720314"></a>Ohodnocení hran</h3>
+                </div>
+              </div>
+            </div>
+            <p>Nabízí se hodnotit hrany grafu (tj. modelu dopravní sítě) mezi
+        uzly X a Y hodnotou času, který potřebuje linka, aby dojela ze
+        zastávky A do zastávky B, a nad takovýmto grafem vyhledávat. Toto
+        hodnocení hran však nezohledňuje dynamičnost celého modelu. Linka
+        nemusí jet ze zastávky hned. Tuto dobu je nutno připočítat k době
+        přejezdu ze zastávky do zastávky. Rovněž je vhodné hodnotit hranu i
+        číslem linky, aby se zamezilo zbytečným přestupům z jedné linky na
+        druhou, jedou-li různé linky ve stejnou dobu na stejné trase.</p>
+          </div>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="id4720347"></a>Shrnutí</h2>
+              </div>
+            </div>
+          </div>
+          <p>Z těchto poznatků jsem vyvodil, že použiji silně modifikovanou
+      verzi Dijkstrova algoritmu. Zůstane z něj akorát myšlenka
+      „<span class="quote">rozbalování</span>“ nejlacinějších uzlů jako prvních. To zajistí,
+      že v dané fázi výpočtu budou prohledány všechny uzly s menší nebo rovnou
+      cenou než právě aktuální uzel. Algoritmus může hledat efektivněji,
+      spojíme-li ho s vhodnou heuristikou. Nabízí se dvě řešení.</p>
+          <div class="itemizedlist">
+            <ul type="disc">
+              <li>
+                <p>Využít znalosti geografické pozice zastávek a upřednostňovat
+          uzly, které jsou ve směru cílové zastávky. Tato informace bohužel
+          není v datech dostupná.</p>
+              </li>
+              <li>
+                <p>Dálniční hierarchie. Heuristika inspirovaná velkými mapami.
+          Je-li k dispozici informace, ve které části grafu se počáteční a
+          koncový uzel nacházejí, může se vytvořit pomyslný graf na vyšší
+          úrovni a spojit tyto části (nyní už uzly nového grafu) hranami, tzv.
+          dálnicemi. Uvnitř částí pak vyhledávat klasicky. Toto řešení je
+          vhodné spíše pro aplikace obhospodařující více klientů s větším
+          množstvím paměti a výpočetní síly (např. cluster), protože si mohou
+          ukládat spoje mezi jednotlivými částmi do cache paměti.</p>
+              </li>
+            </ul>
+          </div>
+          <p>Z paměťových omezení platformy <a href="#omezeni">7.2</a> vyplývá,
+      že je nereálné uchovávat celou reprezentaci grafu v paměti. Nicméně,
+      je-li „<span class="quote">prohledávaný uzel</span>“ zároveň uzel reprezentující
+      cílovou stanici, může být hledání ukončeno a je zaručen správný
+      výsledek. Pro nejhorší případy (ve smyslu nejvzdálenější cesty) bohužel
+      může dojít k ukončení algoritmu z důvodu omezené velikosti paměti daného
+      mobilního zařízení.</p>
+        </div>
+        <div class="footnotes">
+          <br />
+          <hr width="100" align="left" />
+          <div class="footnote">
+            <p><sup>[<a id="ftn.id4720303" href="#id4720303">3</a>] </sup>Například linka, která jezdí v kruhu.</p>
+          </div>
+        </div>
+      </div>
+      <div class="chapter" lang="cs" xml:lang="cs">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h2 class="title"><a id="id4790219"></a>Kapitola 6. Konvertor dat</h2>
+            </div>
+          </div>
+        </div>
+        <p>Protože data s informacemi o linkách dodaná z jiného systému jsou
+    příliš obsáhlá a obsahují spoustu redundantních informací, je s mobilní
+    aplikací dodávána také desktopová aplikace, která zajistí konverzi dat z
+    vstupního formátu na formát, který podporuje mobilní aplikace. Tuto
+    aplikaci budu označovat jako konvertor.</p>
+        <p>Konvertor je aplikace napsaná v Javě využívající Swing(<a href="#obr" title="Obrázek A.1. Aplikace Konvertor">A.1 – „Aplikace Konvertor“</a>). Uživatel v ní nastaví cesty k jednotlivým souborům s
+    daty, cestu k <code class="envar">jar</code> archivu mobilní aplikace, cílovou složku
+    a případně úroveň filtru.</p>
+        <p>Filtr slouží ke snížení velikosti výsledného <code class="envar">jar</code>
+    archivu. Cenou za toto snížení velikosti je vynechání některých
+    nepravidelných<sup>[<a id="id4790270" href="#ftn.id4790270">4</a>]</sup> tras<sup>[<a id="id4790281" href="#ftn.id4790281">5</a>]</sup> linek. Tato myšlenka vznikla, protože dodaná data obsahují i
+    spoje reprezentující linky jedoucí z, nebo do vozovny. Jedná se o metodu
+    <code class="envar">filter(int treshold)</code>, kde parametr <code class="envar">treshold</code>
+    určuje, kolikrát denně nejméně musí linka jet trasu, aby byly informace o
+    trase a spojích linky na této trase zahrnuty do výstupních dat. Metoda se
+    neaplikuje na vlaky a na noční autobusy v Brně. Je-li filtr nastaven na
+    hodnotu 0, filtrace se neprovádí. Do výstupních dat se rovněž nepropustí
+    informace o „<span class="quote">neveřejných</span>“ spojích, tj. o spojích označených
+    příznakem <code class="envar">N</code>. Neveřejné spoje představují linky, které
+    nenabírají pasažéry, ale jsou uvedeny ve vstupních datech.</p>
+        <p>Aplikace načte všechny soubory (kromě souborů se starými daty) z
+    <code class="envar">jar</code> archivu mobilní aplikace a vygeneruje z nich nový
+    <code class="envar">jar</code> archiv s již konvertovanými daty. <code class="envar">Jar</code>
+    archiv má totiž stejný formát jako soubor <code class="envar">zip</code> a v Javě
+    nechybí podpora pro práci se soubory <code class="envar">zip</code>. Tento postup
+    vygeneruje spustitelnou aplikaci, protože do přeložených
+    <code class="envar">class</code> souborů není třeba zasahovat a soubor
+    <code class="envar">manifest.mf</code> zůstane stejný.</p>
+        <p>K <code class="envar">jar</code> archivu je vygenerován i <code class="envar">jad</code>
+    deskriptor, do něhož je zapsána nová velikost <code class="envar">jar</code> archivu a
+    verze midletu je inkrementována.</p>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="sec0601"></a>Formát vstupních dat</h2>
+              </div>
+            </div>
+          </div>
+          <p>Informace o spojích a zastávkách jsou obsaženy v devíti souborech.
+      Velikost všech těchto souborů je dohromady 20,2 MB.</p>
+          <div class="variablelist">
+            <dl>
+              <dt>
+                <span class="term">Soubor zastávky.txt</span>
+              </dt>
+              <dd>
+                <p>Obsahuje identifikátory zastávek v původním systému,
+              příznaky tarifních zón, názvy, a má-li zastávka více sloupků,
+              informace o nich. Zastávek, kde jezdí linky IDS JMK, je
+              dohromady 2430. Záznam jedné ze zastávek je znázorněn na obrázku
+              <a href="#obr6.1" title="Obrázek 6.1. Záznam se zastávkou Halasovo náměstí">6.1 – „Záznam se zastávkou Halasovo náměstí“</a>.</p>
+              </dd>
+              <dt>
+                <span class="term">Soubor služby.txt</span>
+              </dt>
+              <dd>
+                <p>Obsahuje informace o spojích jednotlivých linek. Nejprve
+              je uveden identifikátor dne platnosti a typ služby<sup>[<a id="id4790453" href="#ftn.id4790453">6</a>]</sup>, po něm následuje výpis spojů, které v daný den
+              jezdí. Hlavička výpisu spoje obsahuje identifikátor linky a tělo
+              identifikátory jednotlivých zastávek, kde linka zastavuje, a
+              časů. Časy jsou dva, protože zastávka může mít
+              „<span class="quote">pobyt</span>“, kdy čeká na jiný spoj. Záznam jedné z
+              linek je znázorněn na obrázku <a href="#obr6.2" title="Obrázek 6.2. Záznam se službou 001000102 a spojem linky 1">6.2 – „Záznam se službou 001000102 a spojem linky 1“</a>.</p>
+              </dd>
+              <dt>
+                <span class="term">Soubory pátek.txt - neděle.txt</span>
+              </dt>
+              <dd>
+                <p>Obsahují identifikátory platnosti služeb, které určují,
+              která služba (množina spojů) v daný den platí. Jízdní řády linek
+              jsou totiž různé nejen přes víkend a v době svátku, ale mohou se
+              lišit i ve všední dny. Toto platí zejména pro vlaky.</p>
+              </dd>
+            </dl>
+          </div>
+          <p>Vstupní formát dat je pevně daný, a protože je výstupem jiné
+      aplikace, není třeba nějak důkladněji kontrolovat všemožné nekorektní
+      vstupy. Uživatel by do těchto souborů neměl vůbec zasahovat.</p>
+          <div class="figure">
+            <a id="obr6.1"></a>
+            <p class="title">
+              <b>Obrázek 6.1. Záznam se zastávkou Halasovo náměstí</b>
+            </p>
+            <div class="mediaobject">
+              <img src="./Station.png" width="524" alt="Záznam se zastávkou Halasovo náměstí" />
+            </div>
+          </div>
+          <div class="figure">
+            <a id="obr6.2"></a>
+            <p class="title">
+              <b>Obrázek 6.2. Záznam se službou 001000102 a spojem linky 1</b>
+            </p>
+            <div class="mediaobject">
+              <img src="./Service.png" width="524" alt="Záznam se službou 001000102 a spojem linky 1" />
+            </div>
+          </div>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="id4790576"></a>Formát výstupních dat</h2>
+              </div>
+            </div>
+          </div>
+          <p>Vzhledem k omezením vyplývajícím z platformy Java ME bylo potřeba
+      objem dat co nejvíce redukovat a irelevantní informace odfiltrovat.
+      Protože vstupní data mají nízkou entropii, nebyl problém navrhnout
+      formát lépe stravitelný pro mobilní zařízení.</p>
+          <p>Specifikace CLDC 1.1 ani MIDP 2.0 nedefinují maximální velikost
+      <code class="envar">jar</code> archivu aplikace. Toto omezení je způsobeno
+      konkrétními typy mobilních zařízení. Obecně platí, že čím je velikost
+      menší, tím je aplikace z tohoto hlediska kompatibilnější.</p>
+          <p>Výstupní data jsou generována do balíku
+      <code class="envar">cz.muni.fi.mobileIDS._data</code>. Data sestávají ze dvou typů
+      souborů.</p>
+          <div class="itemizedlist">
+            <ul type="disc">
+              <li>
+                <p>
+                  <span class="bold">
+                    <strong>Soubor stations</strong>
+                  </span>
+                </p>
+                <p>Soubor stations obsahuje identifikátory jednotlivých zastávek,
+          zóny, názvy a linky, které na daných zastávkách zastavují. Pro
+          oddělování jednotlivých atributů jedné zastávky slouží znak
+          <code class="envar">@</code>. (Nesmí se tedy vyskytovat v názvu zastávky.) Pro
+          oddělování jednotlivých zastávek slouží znak s ASCII kódem 10, tedy
+          <code class="envar">line feed</code>.</p>
+              </li>
+              <li>
+                <p><span class="bold"><strong>Soubor s informacemi o spojích dané
+          linky</strong></span> - <em class="firstterm">soubor linky</em></p>
+                <p>Množství vygenerovaných souborů linek<sup>[<a id="id4790678" href="#ftn.id4790678">7</a>]</sup> leží v intervalu <code class="envar">&lt;m,n&gt;</code>, kde
+          <code class="envar">m</code> značí počet linek vynásobeno sedmi a
+          <code class="envar">m</code> počet linek vynásobeno čtrnácti. Pro každý den v
+          týdnu se totiž generují jiná data a linka může mít jeden nebo dva
+          soubory v závislosti na tom, zda má dvě různé pravidelné trasy.
+          Jeden soubor s informacemi tedy například mají linky, které jezdí v
+          kruhu, dva různé soubory linky jezdící stejnou trasu z točny na
+          točnu. Tuto vlastnost linky budu označovat jako <em class="firstterm">směr
+          linky</em>.</p>
+                <p>Směr linky je určen lince tak, že je nejprve zjištěna vzorová
+          trasa s nejvíce jízdami (nejpravidelnější), potom podle porovnání
+          pořadí zastávek ve zjišťované a vzorové trase, se trasa i s časy
+          výjezdu umístí do správného souboru. Jeden soubor linky tak může a
+          zpravidla i obsahuje více tras, protože se trasa může měnit ne tak
+          „<span class="quote">dramaticky</span>“, aby byla nová trasa označena jako směr
+          linky. Například pouze dvě zastávky se liší. Trasy jsou potom do
+          souboru zapsány v pořadí od nejfrekventovanější po nejméně
+          frekventovanou.</p>
+                <p>Soubory linek jsou vždy pojmenovány identifikátorem linky se
+          sufixem A nebo B, značícím směr linky, a jsou umístěny do balíku
+          <code class="envar">cz.muni.fi.mobileIDS._data.XX</code>, kde <code class="envar">XX</code>
+          značí den v týdnu.</p>
+                <p>Samotný soubor linky má tento binární formát.</p>
+                <div class="orderedlist">
+                  <ol type="1">
+                    <li>
+                      <p>Na prvním bytu je uložen typ služby.</p>
+                    </li>
+                    <li>
+                      <p>Až do bytu s hexadecimální hodnotou <code class="envar">81</code> jsou
+              střídavě ukládány identifikátory sousedících zastávek a čas v
+              minutách potřebný k přejezdu z první na druhou. ID zastávky je
+              ukládáno na dva byty a čas na jeden. Tento řetězec bytů definuje
+              jednu trasu linky.</p>
+                    </li>
+                    <li>
+                      <p>Mezi bytem <code class="envar">81</code> a <code class="envar">FE</code> se
+              nachází výčet výjezdů linky z první zastávky na trase. Čas je
+              ukládán jako počet minut od půlnoci a je zakódován na dva
+              byty.</p>
+                    </li>
+                    <li>
+                      <p>Za bytem <code class="envar">FE</code> následuje další trasa, tedy
+              opět postupně body č. 2, 3, 4, dokud není dosažen konec
+              souboru.</p>
+                    </li>
+                  </ol>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <p>Velikost výsledných dat je 387 kB při stupni filtrace nastaveném
+      na 10, tedy filtraci, kdy nejsou zahrnuty trasy linek, které nejsou typu
+      vlak nebo noční autobusová linka, a které nemají alespoň 10 jízd. V
+      případě bez filtrace je velikost 1,1 MB. Nemá-li linka žádnou trasu,
+      protože jí byli všechny odfiltrovány, není soubor této linky vůbec
+      vytvořen a v souboru <code class="envar">stations</code> se neobjeví u zastávek, na
+      kterých by měla linka zastavovat.</p>
+        </div>
+        <div class="footnotes">
+          <br />
+          <hr width="100" align="left" />
+          <div class="footnote">
+            <p><sup>[<a id="ftn.id4790270" href="#id4790270">4</a>] </sup>Nepravidelných je zde myšleno tak, že spoj linky nejede přes
+        svou obvyklou trasu.</p>
+          </div>
+          <div class="footnote">
+            <p><sup>[<a id="ftn.id4790281" href="#id4790281">5</a>] </sup>Trasou rozumím uspořádanou n-tici zastávek jedné linky.</p>
+          </div>
+          <div class="footnote">
+            <p><sup>[<a id="ftn.id4790453" href="#id4790453">6</a>] </sup>Typ služby je příznak, který určuje, zda-li je linka
+                  typu tramvaj, trolejbus, autobus, nebo vlak.</p>
+          </div>
+          <div class="footnote">
+            <p><sup>[<a id="ftn.id4790678" href="#id4790678">7</a>] </sup>Počet souborů například pro pátek je, použije-li se nulová
+              úroveň filtrace, 401</p>
+          </div>
+        </div>
+      </div>
+      <div class="chapter" lang="cs" xml:lang="cs">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h2 class="title"><a id="id4790888"></a>Kapitola 7. Vyhledávač</h2>
+            </div>
+          </div>
+        </div>
+        <p>Data, která vyprodukovala aplikace Konvertor, slouží mobilní
+    aplikaci, o níž je tato kapitola.</p>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="sec0701"></a>Kompatibilita</h2>
+              </div>
+            </div>
+          </div>
+          <p>Specifikace, které jsou součástí Javy ME, jsou velmi benevolentní
+      a je v nich spousta doporučení na implementaci. Implementace různých
+      výrobců mobilních zařízení se tak liší. Aplikace se proto může chovat na
+      různých zařízeních různě.</p>
+          <p>Aby byla zaručena co největší kompatibilita s co nejvíce typy
+      zařízení, je nutné psát aplikace takové, aby velikost výsledného
+      <code class="envar">jar</code> archivu, požadavky na operační paměť a velikost
+      displeje zařízení byly co nejmenší.</p>
+          <p><a id="omezeni"></a>Na rozdíl od Javy SE a EE,
+      kde hlavními požadavky na aplikace je znovupoužitelnost kódu a snadná
+      údržba aplikací, je to v Javě ME kompatibilita a rychlost. Je užitečné
+      si uvědomit, že řešení psaná pro mobilní zařízení nemohou být nasazena v
+      clusteru, že ve většině případů není klientem firma, která bude
+      vyžadovat dodaný systém udržovat a vylepšovat. Aplikace mívají značně
+      omezené zdroje. Před čtyřmi lety se pohybovala průměrná maximální
+      velikost <code class="envar">jar</code> archivu podporovaná v zařízeních okolo 64 kB
+      a velikost paměti 210 kB<sup>[<a id="id4790961" href="#ftn.id4790961">8</a>]</sup> [<span class="citation">[a]</span>], dnes už je situace lepší a
+      zařízení začínají podporovat neomezenou<sup>[<a id="id4790977" href="#ftn.id4790977">9</a>]</sup> velikost spustitelného souboru, ale ne každý vlastní
+      nejnovější telefon. Má-li aplikace fungovat i na těchto starých
+      zařízeních, je potřeba snížit tyto hodnoty. Některé techniky snižování
+      těchto hodnot nejsou v souladu s principy ve standardní a enterprise
+      edici Javy. Několik příkladů.</p>
+          <div class="itemizedlist">
+            <ul type="disc">
+              <li>
+                <p>Jakýkoli framework představuje režii navíc.</p>
+              </li>
+              <li>
+                <p>MVC není prioritou.</p>
+              </li>
+              <li>
+                <p>Držet objekty v paměti jen na dobu potřebně nutnou.</p>
+              </li>
+              <li>
+                <p>Zvážit použití neměnitelných tříd
+          [<span class="citation">[3]</span>].</p>
+              </li>
+              <li>
+                <p>Udržovat počet tříd na rozumné úrovni.</p>
+              </li>
+              <li>
+                <p>Používat profiler a memory monitor, jež jsou součástí Sun Java
+          Wireless Toolkit.</p>
+              </li>
+              <li>
+                <p>Používat obfuskátor.</p>
+              </li>
+            </ul>
+          </div>
+          <p>Obfuskátor zabrání možné dekompilaci tříd z tzv. bytecode podoby
+      do čitelné podoby. Chrání tak know-how, a zároveň sníží velikost
+      výsledného souboru.</p>
+          <p>Velikost spustitelného <code class="envar">jar</code> archivu (data s filtrací
+      stupně dva) mobilní aplikace, jež je součástí této práce, je po
+      obfuskaci 730,4 kB, nicméně lze snížit zvýšením filtrace až pod 500 kB.
+      Šířka displeje by měla být pro správné zobrazení spojů alespoň 130
+      pixelů a rozumná velikost operační paměti je alespoň 1 MB.</p>
+          <p>Aplikace využívá vysokoúrovňového API pro tvorbu uživatelského
+      rozhraní. To zaručuje, že aplikace bude fungovat na všech přístrojích
+      správně, ale může vypadat jinak. Každý výrobce si totiž implementuje
+      formulářové prvky jinak. Výhodou tohoto řešení jsou i implementované
+      formulářové prvky jako <code class="envar">DateField</code>, pro výběr času, podpora
+      pro textový vstup od uživatele do prvku <code class="envar">TextField</code> nebo
+      podpora pro stylus.</p>
+          <p>Nízkoúrovňové API, sice dovoluje více, protože dovoluje kreslit
+      grafiku na plátno (třída <code class="envar">Canvas</code>), ale například textový
+      vstup od uživatele by musel být řešen na úrovni událostí, jež klávesy
+      zařízení vyvolávají. Problém by potom byl například se znakem mezery,
+      která je na různých zařízeních na jiné klávese, nebo u zařízení s
+      kompletní klávesnicí.</p>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="id4791144"></a>Případy užití</h2>
+              </div>
+            </div>
+          </div>
+          <p>Případy užití má aplikace dva. Níže jsou textově popsány a
+      zaneseny do diagramu.</p>
+          <div class="orderedlist">
+            <ol type="1">
+              <li>
+                <p>
+                  <span class="bold">
+                    <strong>UC Vyhledávání</strong>
+                  </span>
+                </p>
+                <div class="itemizedlist">
+                  <ul type="disc">
+                    <li>
+                      <p>Uživatel spustí midlet <code class="envar">Vyhledavac.</code></p>
+                    </li>
+                    <li>
+                      <p>Název počáteční a cílové zastávky jsou doplněny hodnotami
+              z předchozího spuštění midletu.</p>
+                    </li>
+                    <li>
+                      <p>Nevyhovují-li stávající hodnoty, vyplní nové.</p>
+                      <div class="itemizedlist">
+                        <ul type="circle">
+                          <li>
+                            <p>Vyplní počáteční zastávku.</p>
+                            <div class="itemizedlist">
+                              <ul type="square">
+                                <li>
+                                  <p>Aplikace „<span class="quote">našeptává</span>“ ty
+                      vhodné.</p>
+                                </li>
+                              </ul>
+                            </div>
+                          </li>
+                          <li>
+                            <p>Vyplní cílovou zastávku.</p>
+                            <div class="itemizedlist">
+                              <ul type="square">
+                                <li>
+                                  <p>Aplikace „<span class="quote">našeptává</span>“ ty
+                      vhodné.</p>
+                                </li>
+                              </ul>
+                            </div>
+                          </li>
+                          <li>
+                            <p>Zvolí čas, pokud nevyhovuje aktuální.</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p>Zvolí příkaz <code class="envar">Vyhledat.</code></p>
+                      <div class="itemizedlist">
+                        <ul type="circle">
+                          <li>
+                            <p>Pokud na řetězec začíná alespoň jedna skutečná
+                  zastávka, je vybrána ta podle abecedy první. To platí pro
+                  oba řetězce.</p>
+                          </li>
+                          <li>
+                            <p>Mají-li oba řetězce svůj obraz mezi skutečnými
+                  zastávkami, spustí se hledání.</p>
+                            <div class="itemizedlist">
+                              <ul type="square">
+                                <li>
+                                  <p>Proběhlo-li hledání neúspěšně, vypíše hlášení
+                      „<span class="quote">Spoj nebyl nalezen.</span>“.</p>
+                                </li>
+                                <li>
+                                  <p>Proběhlo-li hledání úspěšně, zobrazí se výpis
+                      spoje a přidá se příkaz <code class="envar">Detaily</code>.</p>
+                                  <div class="itemizedlist">
+                                    <ul type="disc">
+                                      <li>
+                                        <p>Uživatel zvolí příkaz <code class="envar">Detaily</code>,
+                          jsou mu zobrazeny podrobnější informace o
+                          spoji.</p>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </li>
+                          <li>
+                            <p>Pokud na alespoň jeden z řetězců, zadaných jako názvy
+                  zastávek, nezačíná žádná skutečná zastávka, je uživatel
+                  upozorněn hlášením „<span class="quote">XX zastávka
+                  neexistuje.</span>“.</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <p>
+                  <span class="bold">
+                    <strong>UC Zobrazení jízdního
+          řádu</strong>
+                  </span>
+                </p>
+                <div class="itemizedlist">
+                  <ul type="disc">
+                    <li>
+                      <p>Uživatel spustí midlet <code class="envar">Jizdni rady.</code></p>
+                    </li>
+                    <li>
+                      <p>Vyplní hodnoty.</p>
+                      <div class="itemizedlist">
+                        <ul type="circle">
+                          <li>
+                            <p>Vyplní linku.</p>
+                            <div class="itemizedlist">
+                              <ul type="square">
+                                <li>
+                                  <p>Existuje-li linka, jsou doplněny zastávky a
+                      směr.</p>
+                                </li>
+                              </ul>
+                            </div>
+                          </li>
+                          <li>
+                            <p>Jsou-li zastávky a směr vyplněny, uživatel z nich
+                  vybere.</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <p>Zvolí příkaz <code class="envar">Zobrazit</code>.</p>
+                      <div class="itemizedlist">
+                        <ul type="circle">
+                          <li>
+                            <p>Jsou-li hodnoty vyplněny správně, je mu zobrazen
+                  jízdní řád.</p>
+                          </li>
+                          <li>
+                            <p>Nejsou-li hodnoty vyplněny správně, je
+                  upozorněn.</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ol>
+          </div>
+          <div class="figure">
+            <a id="id4791478"></a>
+            <p class="title">
+              <b>Obrázek 7.1. Use case diagram</b>
+            </p>
+            <div class="mediaobject">
+              <img src="./UseCase.png" width="543" alt="Use case diagram" />
+            </div>
+          </div>
+        </div>
+        <div class="sect1" lang="cs" xml:lang="cs">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title" style="clear: both"><a id="id4791500"></a>Schéma a implementace</h2>
+              </div>
+            </div>
+          </div>
+          <p>Aplikace sice nedodržuje model MVC, protože vrstva view využívá
+      některé metody tříd <code class="envar">LineUtils</code> a
+      <code class="envar">StationUtils</code> k překládání identifikátorů na názvy.
+      Nicméně toto porušení není tak dramatické a na schématu je pro lepší
+      pochopení aplikace znázorněna jako MVC. Pro jednoduchost nejsou do
+      diagramu zaneseny také metody netýkající se aplikační logiky
+      aplikace.</p>
+          <div class="figure">
+            <a id="id4791530"></a>
+            <p class="title">
+              <b>Obrázek 7.2. Diagram celé aplikace</b>
+            </p>
+            <div class="mediaobject">
+              <img src="./SystemDiagram.png" width="563" alt="Diagram celé aplikace" />
+            </div>
+          </div>
+          <div class="sect2" lang="cs" xml:lang="cs">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h3 class="title"><a id="id4791554"></a>Midlety</h3>
+                </div>
+              </div>
+            </div>
+            <p>Sada midletů mobilní aplikace sestává ze dvou midletů.
+        <code class="classname">TimeTableMidlet</code> a
+        <code class="classname">SearchMidlet</code>, součástí těchto tříd jsou vnořené
+        třídy dědící od třídy <code class="classname">Thread</code>.</p>
+            <div class="itemizedlist">
+              <ul type="disc">
+                <li>
+                  <p><span class="bold"><strong>SearchThread</strong></span> Probíhá v něm
+            hledání spojů.</p>
+                </li>
+                <li>
+                  <p><span class="bold"><strong>TimeTableThread</strong></span> Probíhá v
+            něm vyhledání jízdního řádu.</p>
+                </li>
+              </ul>
+            </div>
+            <p>Tyto dvě třídy midletů ovládají tok aplikace. Midlet
+        <code class="classname">SearchMidlet</code> obsahuje navíc vnořené vlákno
+        <code class="classname">LoadSettingsThread</code>, které je spouštěno při
+        startu midletu a vyplní názvy zastávek názvy z předchozího běhu
+        aplikace. Názvy jsou uloženy ve skladišti záznamů. Zadá-li uživatel
+        některý z příkazů, je událost zpracována právě zde. To proto, že
+        midlety implementují rozhraní <code class="classname">CommandListener</code> a
+        jsou navěšeny na formuláře, jež ovládají. Tvoří tak
+        <code class="envar">Controller</code> aplikace.</p>
+          </div>
+          <div class="sect2" lang="cs" xml:lang="cs">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h3 class="title"><a id="id4791648"></a>Formuláře</h3>
+                </div>
+              </div>
+            </div>
+            <p>Základní třídou, od které dědí všechny třídy sloužící pro
+        zobrazování informací, je pro vysokoúrovňové API třída
+        <code class="envar">Form</code>. Formuláře
+        <code class="classname">ChooseTimeTableForm</code>,
+        <code class="classname">TimeTableForm</code> jsou přihlášeny ke třídě
+        <code class="classname">TimeTableMidlet</code> a formuláře
+        <code class="classname">SearchForm</code>, <code class="classname">WaitForm</code>,
+        <code class="classname">ResultForm</code> a <code class="classname">DetailsForm</code>
+        jsou přihlášeny ke třídě <code class="classname">SearchMidlet</code>.
+        Formuláře pro výběr jízdního řádu a pro hledání spoje mají navíc
+        <code class="classname">ItemStateListenery</code>
+        <code class="classname">ChooseTimeTableFormListener</code> a
+        <code class="classname">SearchFormListener</code> kvůli doplňování názvů. Tyto
+        listenery jsou notifikovány, nastane-li změna na prvcích formuláře.
+        Listenery spouští vlákna
+        <code class="classname">StationsOnLineCompletion</code> a
+        <code class="classname">StationCompletionThread</code>, díky nimž je obrazovka
+        displeje neustále připravená k interakci.</p>
+            <div class="figure">
+              <a id="id4791730"></a>
+              <p class="title">
+                <b>Obrázek 7.3. Class diagram view vrstvy</b>
+              </p>
+              <div class="mediaobject">
+                <img src="./ViewDiagram.png" width="543" alt="Class diagram view vrstvy" />
+              </div>
+            </div>
+          </div>
+          <div class="sect2" lang="cs" xml:lang="cs">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h3 class="title"><a id="id4791754"></a>Aplikační logika</h3>
+                </div>
+              </div>
+            </div>
+            <p>K datům přistupují třídy <code class="classname">LineUtils</code> a
+        <code class="classname">StationUtils</code>, můžeme na ně nahlížet jako na DAO
+        objekty, protože adaptují těžkopádný přístup k datům přes proudy
+        (streamy) na přijatelnější rozhraní, vracející už hotové instance
+        doménových tříd. Obě třídy jsou navrženy podle návrhového vzoru
+        Singleton [<span class="citation">[5]</span>].</p>
+            <p>Doménové třídy představují třídy <code class="classname">Station</code>,
+        jejíž instance reprezentují zastávky, <code class="classname">Line</code> pro
+        linky a třída <code class="classname">Step</code>, jejíž instance slouží pro
+        uchovávání si informací o spoji.</p>
+            <p>Hledání probíhá ve třídě <code class="classname">Searcher</code>,
+        přesněji ve vlákně <code class="classname">SearchThread</code>, které si
+        vytvoří instanci třídy <code class="classname">Searcher</code>. Algoritmus
+        implementuje myšlenku z Dijkstrova algoritmu. Využívá tříd
+        <code class="classname">LineUtils</code> a <code class="classname">StationUtils</code>
+        k přístupu k datům. <code class="envar">Vector linePool</code> slouží jako cache
+        paměť mezi relativně drahými operacemi na otvírání, čtení a zavírání
+        souborů. <code class="envar">Hashtable stations</code> je kolekce pro ukládání
+        doposud napočítaných vzdáleností (tedy časů od počáteční zastávky) do
+        navštívených zastávek.</p>
+            <p>Nebudu-li zbytečně zabíhat do detailů, tak algoritmus v každém
+        kroku vybere zastávku s nejmenší vzdáleností. Pro všechny její linky,
+        které ještě nejsou v kolekci <code class="envar">linePool</code> (tzn. nová linka
+        a možný přestup), a pro linku, jejíž identifikátor se shoduje s
+        identifikátorem linky zastávky (značí, kterou linkou jsme přijeli na
+        zastávku), ohodnotí a uloží sousední zastávky. Obsahuje i mechanizmus
+        na vypořádávání se se směry linek.</p>
+          </div>
+        </div>
+        <div class="footnotes">
+          <br />
+          <hr width="100" align="left" />
+          <div class="footnote">
+            <p><sup>[<a id="ftn.id4790961" href="#id4790961">8</a>] </sup>Tyto údaje platí konkrétně pro telefon Nokia 3100 a
+          3120.</p>
+          </div>
+          <div class="footnote">
+            <p><sup>[<a id="ftn.id4790977" href="#id4790977">9</a>] </sup>Je samozřejmě omezena velikostí paměti v telefonu pro ukládání
+          dat.</p>
+          </div>
+        </div>
+      </div>
+      <div class="chapter" lang="cs" xml:lang="cs">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h2 class="title"><a id="ch06"></a>Kapitola 8. Závěr</h2>
+            </div>
+          </div>
+        </div>
+        <p>Platforma Java ME je navržena zejména pro aplikace využívající ke
+    své činnosti síť. Aplikační logika je tak přesunuta na jiné místo a
+    mobilní aplikace jen využívá její služby. Toto řešení si žádá platit
+    poplatky za informační kanál. Tvorba užitečných offline aplikací je kvůli
+    omezeným paměťovým prostředkům ztížená, nicméně možná.</p>
+        <p>Účelem této práce bylo vytvořit aplikaci, která hledá spoje v
+    dopravní síti. Výsledná aplikace má jednoduché a intuitivní ovládání a je
+    užitečná v případě, že potřebujeme efektivněji cestovat veřejnou dopravou.
+    Aplikace není nijak těsně závislá na obsahu dat, proto lze při dodržení
+    formátu využívat aplikaci i pro jiné města. V současné době vzniká
+    internetová verze aplikace v rámci projektu do předmětu PA165. Ta bude
+    poskytovat službu vyhledávání pomocí webových služeb, proto je možné
+    vytvořit jednoduchou mobilní aplikaci, která těchto služeb bude využívat,
+    a zajistit tak centralizovanost a aktuálnost dat za cenu investice ze
+    strany klientů do poplatků za informační kanál.</p>
+      </div>
+      <div class="bibliography">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h2 class="title"><a id="id4791931"></a>Bibliografie</h2>
+            </div>
+          </div>
+        </div>
+        <div class="biblioentry">
+          <p>[<span class="abbrev">[1]</span>] <span class="author"><span class="firstname">Kin</span> <span class="surname">Topley</span>: </span><span class="title"><i>J2ME v kostce</i>, </span><span class="publisher"><span class="publishername">Grada Publishing, </span></span><span class="pubdate">2004, </span><span class="isbn">80-247-0426-9.</span></p>
+        </div>
+        <div class="biblioentry">
+          <p>[<span class="abbrev">[2]</span>] <span class="authorgroup"><span class="firstname">James</span> <span class="othername">P.</span> <span class="surname">White</span>, <span class="firstname">David</span> <span class="surname">Hemphill</span> a <span class="firstname">David</span> <span class="surname">Manning</span>: </span><span class="title"><i>Java 2 Micro Edition: Java in small things</i>, </span><span class="publisher"><span class="publishername">Manning Publications, </span></span><span class="pubdate">2002, </span><span class="isbn">0-7695-1050-7.</span></p>
+        </div>
+        <div class="biblioentry">
+          <p>[<span class="abbrev">[3]</span>] <span class="author"><span class="firstname">Joshua</span> <span class="surname">Bloch</span>: </span><span class="title"><i>Java efektivně - 57 zásad softwarového experta</i>, </span><span class="publisher"><span class="publishername">Grada Publishing, </span></span><span class="pubdate">2002, </span><span class="isbn">80-247-0416-1.</span></p>
+        </div>
+        <div class="biblioentry">
+          <p>[<span class="abbrev">[4]</span>] <span class="author"><span class="firstname">Martin</span> <span class="surname">Fowler</span>: </span><span class="title"><i>Refaktoring - Zlepšení existujícího kódu</i>, </span><span class="publisher"><span class="publishername">Grada Publishing, </span></span><span class="pubdate">2003, </span><span class="isbn">80-247-0299-1.</span></p>
+        </div>
+        <div class="biblioentry">
+          <p>[<span class="abbrev">[5]</span>] <span class="authorgroup"><span class="firstname">Eric</span> <span class="surname">Freeman</span>, <span class="firstname">Kathy</span> <span class="surname">Sierra</span> a <span class="firstname">Bert</span> <span class="surname">Bates</span>: </span><span class="title"><i>Head First Design Patterns</i>, </span><span class="publisher"><span class="publishername">O'Reilly, </span></span><span class="pubdate">2004, </span><span class="isbn">0-596-00712-4.</span></p>
+        </div>
+        <div class="biblioentry">
+          <p>[<span class="abbrev">[6]</span>] <span class="authorgroup"><span class="firstname">Ben</span> <span class="surname">Collins-Sussman</span>, <span class="firstname">Brian</span> <span class="surname">Fitzpatrick</span> a <span class="firstname">Michael</span> <span class="surname">Pilato</span>: </span><span class="title"><i>Version Control with Subversion</i>, </span><span class="publisher"><span class="publishername">Ben Collins-Sussman, Brian W. Fitzpatrick, C. Michael
+        Pilato, </span></span><span class="isbn">0-596-00448-6, </span><span class="pubdate">2007, </span></p>
+        </div>
+        <div class="biblioentry">
+          <p>[<span class="abbrev">[7]</span>] <span class="author"><span class="firstname">Enrique</span> <span class="othername">C.</span> <span class="surname">Ortiz</span>: </span><span class="title"><i>Introduction to OTA Application Provisioning</i>, </span><span class="pubdate">2002, </span><span class="releaseinfo"><a href="http://developers.sun.com/mobility/midp/articles/ota/" target="_top">Dostupný z
+      URL</a> (prosinec, 2007).</span></p>
+        </div>
+        <div class="biblioentry">
+          <p>[<span class="abbrev">[8]</span>] <span class="corpauthor">Sun Microsystems, </span><span class="title"><i>MID Profile</i>, </span><span class="pubdate">2006, </span><span class="releaseinfo"><a href="http://java.sun.com/javame/reference/apis/jsr118/" target="_top">Dostupný z
+      URL</a> (prosinec, 2007).</span></p>
+        </div>
+        <div class="biblioentry">
+          <p>[<span class="abbrev">[9]</span>] <span class="corpauthor">Sun Microsystems, </span><span class="title"><i>JSR–000118 Mobile Information Device Profile 2.0</i>, </span><span class="pubdate">2004, </span><span class="releaseinfo"><a href="http://jcp.org/aboutJava/communityprocess/final/jsr118/" target="_top">Dostupný z
+      URL</a> (prosinec, 2007).</span></p>
+        </div>
+        <div class="biblioentry">
+          <p>[<span class="abbrev">[a]</span>] <span class="corpauthor">Enough Software, </span><span class="title"><i>J2ME Polish: MIDP/2.0 Devices</i>, </span><span class="releaseinfo"><a href="http://www.j2mepolish.org/devices/platform_MIDP_2.0.html" target="_top">Dostupný
+      z URL</a> (prosinec, 2007).</span></p>
+        </div>
+        <div class="biblioentry">
+          <p>[<span class="abbrev">[b]</span>] <span class="corpauthor">Google, </span><span class="title"><i>Android</i>, </span><span class="releaseinfo"><a href="http://code.google.com/android/" target="_top">Dostupný z
+      URL</a> (prosinec, 2007).</span></p>
+        </div>
+      </div>
+      <div class="appendix" lang="cs" xml:lang="cs">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h2 class="title"><a id="appA"></a>Příloha A. Podoba aplikací</h2>
+            </div>
+          </div>
+        </div>
+        <div class="figure">
+          <a id="obr"></a>
+          <p class="title">
+            <b>Obrázek A.1. Aplikace Konvertor</b>
+          </p>
+          <div class="mediaobject">
+            <img src="./Converter.png" width="373" alt="Aplikace Konvertor" />
+          </div>
+        </div>
+        <div class="figure">
+          <a id="id4792462"></a>
+          <p class="title">
+            <b>Obrázek A.2. Midlet pro vyhledávání</b>
+          </p>
+          <div class="mediaobject">
+            <img src="./Searcher.png" width="660" alt="Midlet pro vyhledávání" />
+          </div>
+        </div>
+        <div class="figure">
+          <a id="id4792485"></a>
+          <p class="title">
+            <b>Obrázek A.3. Midlet pro zobrazení jízdních řádů</b>
+          </p>
+          <div class="mediaobject">
+            <img src="./TimeTables.png" width="440" alt="Midlet pro zobrazení jízdních řádů" />
+          </div>
+        </div>
+      </div>
+      <div class="appendix" lang="cs" xml:lang="cs">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h2 class="title"><a id="id4792511"></a>Příloha B. Obsah CD</h2>
+            </div>
+          </div>
+        </div>
+        <p>Součástí práce je přiložené CD, které obsahuje obě popsané aplikace
+    ve formě projektů pro IDE Netbeans 6.0, data se zastávkami a spoji linek,
+    dokumentaci ve formátu Javadoc pro mobilní aplikaci a tuto bakalářskou
+    práci ve formátech pdf, html, DocBook a LaTeX.</p>
+      </div>
+    </div>
+  </body>
+</html>

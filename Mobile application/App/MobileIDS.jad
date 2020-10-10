@@ -1,0 +1,9 @@
+MIDlet-1: Vyhledavac,/cz/muni/fi/mobileIDS/_images/logo.png,cz.muni.fi.mobileIDS.src.SearchMidlet
+MIDlet-2: Jizdni rady,/cz/muni/fi/mobileIDS/_images/ttables.png,cz.muni.fi.mobileIDS.src.TimeTablesMidlet
+MIDlet-Jar-Size: 762754
+MIDlet-Jar-URL: MobileIDS.jar
+MIDlet-Name: MobileIDS
+MIDlet-Vendor: Jiri Kremser
+MIDlet-Version: 1.1
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0

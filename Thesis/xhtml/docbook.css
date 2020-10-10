@@ -1,0 +1,250 @@
+/*
+ * DocBook CSS stylesheet
+ * $DocBook: docbook.css,v 1.8 2006/05/15 12:46:50 darklord $
+ */
+
+
+body {
+	margin: 3em 4em 2em 3em;
+	color: #000000;
+	background: #FFFFFF;
+	font-family: "Times New Roman", Helvetica, "Lucida Sans", serif;
+/*	font-family: arial, verdana, sans-serif; */
+}
+
+a:link { 
+	color: #008080;
+	background: #FFFFFF;
+}
+
+a:visited {
+	color: #4682B4;
+	background: #FFFFFF;
+	text-decoration: none;
+}
+
+a:hover	{
+	color: #DAA520;
+	background: #FFFFFF;
+}
+
+div.titlepage h1.title {
+	padding-top: 40px;
+	text-align: left;
+	font-family: Arial, sans-serif;
+}
+
+h1.title {
+	padding-top: 40px;
+	text-align: center;
+	font-family: Arial, sans-serif;
+}
+
+h2.title {
+	font-family: Arial, sans-serif;
+/*	background: lightblue;*/
+}
+
+div.titlepage h2.subtitle {
+	padding-top: 0px;
+	text-align: left;
+	font-family: Arial, sans-serif;
+}
+
+h2.subtitle {
+	text-align: center;
+	font-family: Arial, sans-serif;
+}
+
+h3.title {
+	font-family: Arial, sans-serif;
+}
+
+h3.author {
+	padding-top: 20px;
+	text-align: center;
+	font-family: Arial, sans-serif;
+}
+
+h4.title {
+	font-family: Arial, sans-serif;
+}
+
+dt { 
+	padding-top: 5px; 
+	font-weight: bold; 
+	font-size: 95%;
+}
+
+ul {
+	list-style: disc;
+}
+
+ul ul {
+	list-style: circle;
+}
+
+ul ul ul {
+	list-style: square;
+}
+
+hr {
+	color: #000000;
+	background: #FFFFFF;
+	height: 0;
+}
+
+pre.programlisting {
+	font-family: "Courier New", monospace;
+	color: #483D8B;
+	background: #F5F5F5;
+}
+
+code, tt {
+	font-family: "Courier New", monospace;
+	color: #483D8B;
+	background: #FFFFFF;
+}
+
+div.book {
+    margin-left: 20px;
+}
+
+div.preface {
+	margin-top: 60px;
+}
+
+div.abstract {
+}
+
+div.declaration {
+}
+
+div.advisor {
+}
+
+div.titlepage {
+}
+
+div.figure {
+}
+
+div.figure p.title {
+	font-size: 90%;
+}
+
+div.example {
+}
+
+div.cmdsynopsis {
+	background: #F5F5F5;
+	color: #000000;
+}
+
+div.revhistory {
+	visibility: hidden;
+}
+
+div.revhistory table tr th {
+	border: none;
+}
+
+div.revhistory table tr td {
+	border: none;
+}
+
+div.revhistory table {
+	border: none;
+}
+
+div.toc {
+	margin: 0px 20px;
+	font-family: Arial, sans-serif;
+}
+
+div.list-of-tables {
+	margin: 0px 20px;
+	font-family: Arial, sans-serif;
+}
+
+div.list-of-figures {
+	margin: 0px 20px;
+	font-family: Arial, sans-serif;
+}
+
+div.list-of-examples {
+	margin: 0px 20px;
+	font-family: Arial, sans-serif;
+}
+                 
+div.list-of-equations {
+	margin: 0px 20px;
+	font-family: Arial, sans-serif;
+}
+
+p.university {
+	padding-top: 40px;
+	text-align: center;
+	text-transform: uppercase;	
+	font-size: 90%;
+	font-weight: bold;
+}
+
+p.faculty {
+	text-align: center;
+	text-transform: uppercase;	
+	font-size: 90%;
+	font-weight: bold;
+}
+
+div.facultylogo {
+	padding-top: 20px;
+	text-align: center;
+}
+
+div.chapter {
+	padding-top: 40px;
+}
+
+div.section {
+}
+
+div.sect1 {
+}
+
+div.sect2 {
+}
+
+div.sect3 {
+}
+
+p.pubdate {
+	padding-top: 120px;
+	text-align: center;
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+}
+
+p.title {
+	font-family: Arial, sans-serif;
+}
+/*
+p.pubdate:before { 
+	content: "Brno, ";
+	padding-top: 120px;
+	text-align: center;
+	font-weight: bold;
+}
+*/
+
+span.acronym {
+	font-family: Arial, sans-serif;
+	font-size: 90%;
+}
+
+span.filename {
+}
+
+span.application {
+	font-weight: bold;
+}
